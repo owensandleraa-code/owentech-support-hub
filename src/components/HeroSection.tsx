@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Zap, Clock } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const badges = [
   { icon: Shield, text: "Trusted by 2,000+ clients" },
@@ -11,11 +10,15 @@ const badges = [
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden section-padding min-h-[85vh] flex items-center">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-      </div>
+      {/* Abstract background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
+      <div className="absolute inset-0 opacity-20" style={{
+        backgroundImage: `radial-gradient(circle at 20% 50%, hsl(210 100% 55% / 0.15) 0%, transparent 50%), 
+                          radial-gradient(circle at 80% 20%, hsl(210 100% 55% / 0.1) 0%, transparent 40%),
+                          radial-gradient(circle at 50% 80%, hsl(195 100% 60% / 0.08) 0%, transparent 50%)`,
+      }} />
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-primary/3 rounded-full blur-3xl" />
 
       <div className="container mx-auto relative z-10">
         <motion.div
@@ -24,7 +27,6 @@ const HeroSection = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl"
         >
-          {/* Trust badges */}
           <div className="flex flex-wrap gap-3 mb-8">
             {badges.map(({ icon: Icon, text }) => (
               <span key={text} className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1.5">
